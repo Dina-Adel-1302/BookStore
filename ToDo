@@ -1,6 +1,6 @@
 0- important: make sure to edit the paths of the txt files in your code.
 
-1- Add store item: when the button "Add store item" is clicked:
+1- Add store item: when the button "Add store item" is clicked: (Dina - in progress)
   1.1- Open new window (i.e: any_variable_name = Flammarion::Engraving.new)
   1.2- Add two buttons inside the window ( Add Book - Add Magazine) as in Marwan's project https://www.youtube.com/watch?v=hLpzrXDzxZ0
   1.3- When the button "Add Book" is clicked: open new window (step 1.1) and add 5 text boxes for title, price, author name, number of pages, isbn.
