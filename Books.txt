@@ -1,3 +1,4 @@
 Ruby Cookbook,100.3,Lucas Carlson,400,9780596523695
 Ruby programming,90,Jerry Lee,200,1730497513499
 Intro to Ruby,80,John Elder,550,1284396855669
+

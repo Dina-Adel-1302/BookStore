@@ -155,9 +155,10 @@ end
 def write_to_file(item_info, book_or_magazine)
 
     if book_or_magazine == "b"
-        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", item_info, mode: 'a')
+        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", item_info + "\n", mode: 'a')
+        
     else
-        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", item_info, mode: 'a')
+        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", item_info + "\n", mode: 'a')
     end
 end
 
@@ -214,34 +215,60 @@ def run_GUI(store)
     f.puts("Book Store")
 
 
-    #Add new item
+    #Add Store Item
+    f.button("Add Store Item"){
+        
+        window = Flammarion::Engraving.new
+        
+        window.button("Add Book"){
+            window_add_book =  Flammarion::Engraving.new
+            window_add_book.puts("Add Book")
+            # Book: Title, Price, Author name, Number of pages, ISBN
+            title = ""
+            price = ""
+            author_name = ""
+            num_pages = ""
+            isbn = ""
+            window_add_book.input("Title: ") {|msg| title = msg['text'] }
+            window_add_book.input("Price: ") {|msg| price = msg['text'] }
+            window_add_book.input("Author Name: ") {|msg| author_name = msg['text'] }
+            window_add_book.input("Number Of Pages: ") {|msg| num_pages = msg['text'] }
+            window_add_book.input("ISBN: ") {|msg| isbn = msg['text'] }
 
-    item_info = ""
+            window_add_book.button("Add Book"){
+                write_to_file(title + ',' + price + ',' + author_name + ',' + num_pages + ',' + isbn, "b")
+                window_add_book.puts("Book Added Successfully") 
+            }
 
-    book_or_magazine = "Add Book"
+            window_add_book.wait_until_closed
+        }#End button "Add Book"
 
-    f.dropdown(["Add Book", "Add Magazine"]){|user_choose| book_or_magazine = user_choose['text']}
+        window.button("Add Magazine"){
+            window_add_magazine =  Flammarion::Engraving.new
+            window_add_magazine.puts("Add Magazine")
+            # Magazine: Title, Price, Publisher Agent, Date
+            title = ""
+            price = ""
+            publisher_agent = ""
+            date = ""
+           
+            window_add_magazine.input("Title: ") {|msg| title = msg['text'] }
+            window_add_magazine.input("Price: ") {|msg| price = msg['text'] }
+            window_add_magazine.input("Publisher Agent: ") {|msg| publisher_agent = msg['text'] }
+            window_add_magazine.input("Date: ") {|msg| date = msg['text'] }
 
-    txtBox_txt = "Title, Price, Author name, Number of pages, ISBN"
+            window_add_magazine.button("Add Magazine"){
+                write_to_file(title + ',' + price + ',' + publisher_agent + ',' + date, "m")
+                window_add_magazine.puts("Magazine Added Successfully") 
+            }
 
-    if book_or_magazine == "Add Magazine"
+            window_add_magazine.wait_until_closed
 
-        txtBox_txt = "Title, Price, Publisher agent, Date"
+        }#End button "Add Magazine"
 
-    end
+        window.wait_until_closed
 
-    f.input(txtBox_txt) {|item_info_from_user| item_info = item_info_from_user['text'] }
-
-    f.button("Add store item".white) {if book_or_magazine == "Add Book"  
-
-                                            write_to_file(item_info, "b") 
-
-                                        else  
-
-                                            write_to_file(item_info, "m") 
-
-                                        end}
-
+    }#End Add Store Item
 
 
     #list most expensive items
@@ -256,7 +283,7 @@ def run_GUI(store)
 
     end
 
-    f.button("List most expensive items".white) {f.puts most_3_expensive_items}
+    f.button("List Most Expensive Items".white) {f.puts"Most 3 Expensive Items: "; f.puts most_3_expensive_items; f.puts"-------------------------------------------------------------------------------"  }
 
     #list books within certain range 
     f.button("List Books Within Certain Price Range".white) {
@@ -298,9 +325,6 @@ def run_GUI(store)
 
     }#End list books within certain range 
 
-
-
-    
 
     #search magazine by date
 
@@ -399,8 +423,7 @@ def run_GUI(store)
 
 
     #List of all store items     
-
-    f.button("List of all store items".white) {f.puts load_items}
+    f.button("List All Store Items".white) {f.puts"All Items In Store "; f.puts load_items; f.puts"-------------------------------------------------------------------------------" }
 
 
 
