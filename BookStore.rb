@@ -53,21 +53,23 @@ def load_items
 
     File.open("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", "r") do |f|
         f.each_line do |line|
-            line_splitted = line.split(',')
-            #Book.txt title,price,author name,number of pages,isbn 
-            #line_splitted[4] = line_splitted[4].delete("\n")
-            book_object = Book.new(line_splitted[0],line_splitted[1], line_splitted[2],line_splitted[3], line_splitted[4])
-            store.push(book_object)
+            if !line.empty? && line.to_s != ("\n")
+                line_splitted = line.split(',')
+                #Book.txt title,price,author name,number of pages,isbn 
+                book_object = Book.new(line_splitted[0],line_splitted[1], line_splitted[2],line_splitted[3], line_splitted[4])
+                store.push(book_object)
+            end
         end
     end
      
     File.open("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", "r") do |f|
         f.each_line do |line|
-            line_splitted = line.split(',')
-            #Magazine.txt #title,price,publisher-agent,date
-            #line_splitted[3] = line_splitted[3].delete("\n")
-            magazine_object = Magazine.new(line_splitted[0],line_splitted[1], line_splitted[2],line_splitted[3])
-            store.push(magazine_object)
+            if !line.empty? && line.to_s != ("\n")
+                line_splitted = line.split(',')
+                #Magazine.txt #title,price,publisher-agent,date
+                magazine_object = Magazine.new(line_splitted[0],line_splitted[1], line_splitted[2],line_splitted[3])
+                store.push(magazine_object)
+            end
         end
     end
 
