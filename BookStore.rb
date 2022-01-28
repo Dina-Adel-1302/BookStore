@@ -39,9 +39,9 @@ class Book < StoreItem
 
     def to_s 
 
-        return "Title: " + @title.to_s + " Price: " + @price.to_s + " Author: " + @author_name.to_s +
+        return "Title: " + @title.to_s + " - Price: " + @price.to_s + " - Author: " + @author_name.to_s +
 
-        " Number of pages: " + @num_pages.to_s + " ISBN: " + @isbn.to_s
+        " - Number of pages: " + @num_pages.to_s + " - ISBN: " + @isbn.to_s
 
     end
 
@@ -75,9 +75,9 @@ class Magazine < StoreItem
 
     def to_s
 
-        return "Title: " + @title.to_s + " Price: " + @price.to_s + " Publisher agent: " + @publisher_agent.to_s + 
+        return "Title: " + @title.to_s + " - Price: " + @price.to_s + " - Publisher agent: " + @publisher_agent.to_s + 
 
-                " Date: " + @date.to_s
+                " - Date: " + @date.to_s
 
     end
 
@@ -273,17 +273,15 @@ def run_GUI(store)
 
     #list most expensive items
 
-    store_sorted_descendingly = sort_store_by_price(load_items)
-
-    most_3_expensive_items = []
-
-    for i in 0..2
-
-        most_3_expensive_items.push(store_sorted_descendingly[i])
-
-    end
-
-    f.button("List Most Expensive Items".white) {f.puts"Most 3 Expensive Items: "; f.puts most_3_expensive_items; f.puts"-------------------------------------------------------------------------------"  }
+    f.button("List Most Expensive Items".white) {
+        window = Flammarion::Engraving.new
+        window.puts("Most 3 Expensive Items: ")
+        window.puts()
+        store_sorted_descendingly = sort_store_by_price(load_items)
+        for i in 0..2
+            window.puts(store_sorted_descendingly[i])
+        end
+        }
 
     #list books within certain range 
     f.button("List Books Within Certain Price Range".white) {
@@ -326,7 +324,7 @@ def run_GUI(store)
     }#End list books within certain range 
 
 
-    #search magazine by date
+    #Search Magazine By Date
 
     f.button("Search Magazine By Date".white) {
 
@@ -374,7 +372,7 @@ def run_GUI(store)
 
             else 
 
-                window.puts "Magazine Not Found"
+                window.puts "No Magazine Found"
 
             end
 
@@ -385,8 +383,6 @@ def run_GUI(store)
         window.wait_until_closed
 
     }#End search magazine by date
-
-    
 
     #------------------------------------------------------------------
 
@@ -423,10 +419,15 @@ def run_GUI(store)
 
 
     #List of all store items     
-    f.button("List All Store Items".white) {f.puts"All Items In Store "; f.puts load_items; f.puts"-------------------------------------------------------------------------------" }
-
-
-
+    f.button("List All Store Items".white) {
+        window = Flammarion::Engraving.new 
+        window.puts"All Items In Store: "
+        window.puts()
+        tmp_store = load_items
+        tmp_store.each do |item|
+            window.puts item
+        end
+    }
     # f.dropdown([1,2,3]){|h_msg| p h_msg['text']}
 
 
