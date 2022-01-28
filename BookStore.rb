@@ -52,7 +52,7 @@ def load_items
     
     store = []
 
-    File.open("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/OOP Task/Books.txt", "r") do |f|
+    File.open("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", "r") do |f|
         f.each_line do |line|
             line_splitted = line.split(',')
             #Book.txt title,price,author name,number of pages,isbn 
@@ -62,7 +62,7 @@ def load_items
         end
     end
      
-    File.open("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/OOP Task/Magazines.txt", "r") do |f|
+    File.open("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", "r") do |f|
         f.each_line do |line|
             line_splitted = line.split(',')
             #Magazine.txt #title,price,publisher-agent,date
