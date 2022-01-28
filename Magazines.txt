@@ -1,4 +1,3 @@
 Software Magazine,13,IEEE,20-1-2022
 Communications of the ACM,80,ACM,14-6-2021
 eLearn,50,ACM,12-1-2021
-
