@@ -168,7 +168,7 @@ def run_GUI(store)
             if magazine_found 
                 window.puts magazine
             else 
-                window.puts "magazine not found"
+                window.puts "Magazine Not Found"
             end
         }#End window
 
