@@ -28,7 +28,6 @@ class Book < StoreItem
 
 end
 
-
 #Class to store all the information about the magazine
 class Magazine < StoreItem
     attr_accessor :title, :price, :publisher_agent, :date
@@ -81,9 +80,9 @@ end
 def write_to_file(item_info, book_or_magazine)
     
     if book_or_magazine == "b"
-        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/OOP Task/Books.txt", item_info, mode: 'a')
+        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", item_info, mode: 'a')
     else
-        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/OOP Task/Magazines.txt", item_info, mode: 'a')
+        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", item_info, mode: 'a')
     end
 
 end
@@ -113,7 +112,7 @@ def run_GUI(store)
     
     require 'flammarion'
     f = Flammarion::Engraving.new
-    f.puts("\t\t\t\t\t\t\t\t Book Store".light_blue)
+    f.puts("Book Store")
     
     #Add new item
     item_info = ""
@@ -131,7 +130,7 @@ def run_GUI(store)
                                         end}
 
     #list most expensive items
-    store_sorted_descendingly = sort_store_by_price(store)
+    store_sorted_descendingly = sort_store_by_price(load_item)
     most_3_expensive_items = []
     for i in 0..2
         most_3_expensive_items.push(store_sorted_descendingly[i])
@@ -148,27 +147,25 @@ def run_GUI(store)
     #search magazine by date
     date_from_user = ""
     f.input("Search magazine by date: dd-mm-yyyy") {|txtBox_txt| date_from_user = txtBox_txt['text']}
-    magazine = Magazine.new()
-    magazine_found = false
-    store.each do |item|
-        if item.class.name == magazine.class.name
-            if item.date.to_s == date_from_user
-                magazine = item 
-                magazine_found = true
-                break 
-            end
-        end
-        if magazine_found
-            break
-        end
-    end
-    f.button("Search") {f.puts magazine}
+    f.button("Search") {magazine = Magazine.new()
+                        magazine_found = false
+                        store.each do |item|
+                            if item.class.name == magazine.class.name
+                                if item.date.to_s.include?("\n")
+                                    if item.date.to_s.delete("\n") == date_from_user
+                                        magazine = item 
+                                        magazine_found = true
+                                        break 
+                                    end
+                                end
+                            end
+                            if magazine_found
+                                break
+                            end
+                        end
+                        f.puts magazine}
 
     #List of all store items     
-    itemsArray = []
-    store.each do |item|
-        itemsArray.push(item.to_s)
-    end           
     f.button("List of all store items".white) {f.puts load_items}
 
     # f.dropdown([1,2,3]){|h_msg| p h_msg['text']}
