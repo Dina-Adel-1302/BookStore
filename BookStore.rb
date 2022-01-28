@@ -198,7 +198,7 @@ def write_to_file(item_info, book_or_magazine)
 
     if book_or_magazine == "b"
 
-        #File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", item_info, mode: 'a')
+        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Books.txt", item_info, mode: 'a')
 
         #File.write("/home/ubuntu/bookstore/BookStore/Books.txt", item_info, mode: 'a')
 
@@ -206,7 +206,7 @@ def write_to_file(item_info, book_or_magazine)
 
         #File.write("/home/ubuntu/bookstore/BookStore/Magazines.txt", item_info, mode: 'a')
 
-        #File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", item_info, mode: 'a')
+        File.write("/home/dina/Documents/cloud computing/Sprints - DevOps/Ruby/Tasks/BookStore/Magazines.txt", item_info, mode: 'a')
 
     end
 
