@@ -1,3 +1,5 @@
+0- important: make sure to edit the paths of the txt files in your code.
+
 1- Add store item: when the button "Add store item" is clicked:
   1.1- Open new window (i.e: any_variable_name = Flammarion::Engraving.new)
   1.2- Add two buttons inside the window ( Add Book - Add Magazine) as in Marwan's project https://www.youtube.com/watch?v=hLpzrXDzxZ0
@@ -31,4 +33,4 @@ Notes:
  - Please refer to Marwan's video: https://www.youtube.com/watch?v=hLpzrXDzxZ0
  - Marwan's BookStore repo: https://github.com/MarwanTukhta/OOP-Ruby-BookStore
 
-
+Good luck :) 
