@@ -13,9 +13,17 @@
   2.1- When the button "List of all items" is clicked all the new added items should be shown, and all the deleted items should not be listed. 
   2.3- Additional: When the button "List of all items" is clicked more than once it should not show the items many times.
 
-3- Additional: when the button "List most expensive items" is clicked more than once it should not show the items many times.
+3- List books within certain range.
 
-4- Additional: Write README file for this repo.
+4- Search magazine by date.
+
+5- Search magazine by publisher.
+
+6- Delete an item.
+
+7- Additional: when the button "List most expensive items" is clicked more than once it should not show the items many times.
+
+8- Additional: Write README file for this repo.
 
 Note: 
  - Any Additional features might be done after we finish all the project. 
