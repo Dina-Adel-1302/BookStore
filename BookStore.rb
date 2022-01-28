@@ -138,11 +138,32 @@ def run_GUI(store)
     f.button("List most expensive items".white) {f.puts most_3_expensive_items}
 
     #list books within certain range 
-    # price_range_from_user = ""
-    # f.input("Price range: 0-1,000,000") {|input_price_range_from_user| price_range_from_user = input_price_range_from_user['text']; f.puts input_price_range_from_user }
-    # price_range = price_range_from_user.split("-")
-    # p price_range_from_user
-    # f.button("List books within certain range".white) {f.puts price_range}
+    f.button("List Books Within Certain Price Range".white) {
+        window = Flammarion::Engraving.new
+        books_found = false
+        range_from_user = ""
+        window.input("Price Range: 0-1000000"){|msg| range_from_user = msg['text']}
+        window.button("Search"){
+            tmp_store = load_items
+            range_from_user = range_from_user.split("-")
+            tmp_book = Book.new()
+            tmp_store.each do |item|
+                if item.class.name == tmp_book.calss.name
+                    if item.price.to_i > range_from_user[0] &&
+                        item.price < range_from_user[1]
+                        window.puts item
+                        books_found = true
+                    end
+                end
+            end
+            if !books_found
+                window.puts "No Books Found in That Range "
+            end
+        }#End Search button
+
+
+    }#End list books within certain range 
+
     
     #search magazine by date
     f.button("Search Magazine By Date".white) {
