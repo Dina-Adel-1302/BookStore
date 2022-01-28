@@ -148,10 +148,10 @@ def run_GUI(store)
             range_from_user = range_from_user.split("-")
             tmp_book = Book.new()
             tmp_store.each do |item|
-                if item.class.name == tmp_book.calss.name
-                    if item.price.to_i > range_from_user[0] &&
-                        item.price < range_from_user[1]
-                        window.puts item
+                if item.class.name == tmp_book.class.name
+                    if item.price.to_i > range_from_user[0].to_i &&
+                        item.price.to_i < range_from_user[1].to_i
+                        window.puts item.to_s
                         books_found = true
                     end
                 end
@@ -160,8 +160,7 @@ def run_GUI(store)
                 window.puts "No Books Found in That Range "
             end
         }#End Search button
-
-
+        
     }#End list books within certain range 
 
     
