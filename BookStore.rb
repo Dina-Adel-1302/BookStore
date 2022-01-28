@@ -130,7 +130,7 @@ def run_GUI(store)
                                         end}
 
     #list most expensive items
-    store_sorted_descendingly = sort_store_by_price(load_item)
+    store_sorted_descendingly = sort_store_by_price(load_items)
     most_3_expensive_items = []
     for i in 0..2
         most_3_expensive_items.push(store_sorted_descendingly[i])
@@ -145,9 +145,15 @@ def run_GUI(store)
     # f.button("List books within certain range".white) {f.puts price_range}
     
     #search magazine by date
+    f.button("Search magazine by date".white) {
+        window_search_magazine_by_date = Flammarion::Engraving.new
+        
+        window_search_magazine_by_date.wait_until_closed
+    }#End search magazine by date
     date_from_user = ""
     f.input("Search magazine by date: dd-mm-yyyy") {|txtBox_txt| date_from_user = txtBox_txt['text']}
-    f.button("Search") {magazine = Magazine.new()
+    f.button("Search") {
+                        magazine = Magazine.new()
                         magazine_found = false
                         store.each do |item|
                             if item.class.name == magazine.class.name
