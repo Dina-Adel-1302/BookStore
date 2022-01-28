@@ -28,7 +28,7 @@
 8- Additional: Write README file for this repo.
 
 Notes: 
- - To Open new window: any_variable_name = Flammarion::Engraving.new
+ - To Open new window: any_window_name = Flammarion::Engraving.new, please remember to add: any_window_name.wait_until_closed
  - The code of drop down menu: f.dropdown([1,2,3]){|h_msg| p h_msg['text']}
  - Any Additional features might be done after we finish all the project. 
  - Flammarion repo: https://github.com/zach-capalbo/flammarion
