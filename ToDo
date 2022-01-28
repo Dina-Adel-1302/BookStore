@@ -23,8 +23,7 @@
 
 6- Delete an item. (Abdelrhman)
 
-7.1- The button should read from the files then show the output. 
-7.2- Additional: when the button "List most expensive items" is clicked more than once it should not show the items many times.
+7- Additional: when the button "List most expensive items" is clicked more than once it should not show the items many times.
 
 8- Additional: Write README file for this repo.
 
