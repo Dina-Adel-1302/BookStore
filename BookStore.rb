@@ -145,31 +145,35 @@ def run_GUI(store)
     # f.button("List books within certain range".white) {f.puts price_range}
     
     #search magazine by date
-    f.button("Search magazine by date".white) {
-        window_search_magazine_by_date = Flammarion::Engraving.new
-        
-        window_search_magazine_by_date.wait_until_closed
-    }#End search magazine by date
-    date_from_user = ""
-    f.input("Search magazine by date: dd-mm-yyyy") {|txtBox_txt| date_from_user = txtBox_txt['text']}
-    f.button("Search") {
-                        magazine = Magazine.new()
-                        magazine_found = false
-                        store.each do |item|
-                            if item.class.name == magazine.class.name
-                                if item.date.to_s.include?("\n")
-                                    if item.date.to_s.delete("\n") == date_from_user
-                                        magazine = item 
-                                        magazine_found = true
-                                        break 
-                                    end
-                                end
-                            end
-                            if magazine_found
-                                break
-                            end
-                        end
-                        f.puts magazine}
+    f.button("Search Magazine By Date".white) {
+        window = Flammarion::Engraving.new
+        date_from_user = ""
+        window.input("dd-mm-yyyy") {|msg| date_from_user = msg['text']}
+        window.button ("Search".white){
+            magazine = Magazine.new()
+            magazine_found = false
+            tmp_store = load_items 
+            tmp_store.each do |item|
+                if item.class.name == magazine.class.name
+                    if item.date.to_s.delete("\n") == date_from_user
+                        magazine = item 
+                        magazine_found = true
+                        break 
+                    end
+                end
+                if magazine_found
+                    break
+                end
+            end
+            if magazine_found 
+                window.puts magazine
+            else 
+                window.puts "magazine not found"
+            end
+        }#End window
+
+        window.wait_until_closed
+    }#End search magazine by date 
 
     #List of all store items     
     f.button("List of all store items".white) {f.puts load_items}
