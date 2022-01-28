@@ -1,0 +1,12 @@
+1- Add store item: when the button "Add store item" is clicked:
+  1.1- open new window (i.e: any_variable_name = Flammarion::Engraving.new)
+  1.2- add two buttons inside the window ( Add Book - Add Magazine) 
+  1.3- when the button "Add Book" is clicked: open new window (step 1.1) and add 5 text boxes for title, price, author name, number of pages, isbn.
+    1.3.1 - add "Add Book" button, write the code needed for the button to work successfully (i.e append the book's information in the Books.txt file
+            splitted by commas)
+    1.3.2- The code of the button "Add Book" should be implemented only once. If the user clicked "Add Book" many times for the same book, 
+            The program should add the book only once. 
+    1.3.3- Finally show the message "Item added successfully".
+  1.4- When the button "Add Magazine" is clicked: apply same steps(1.3 => 1.3.3) for the information of the magazine, and the file Magazines.txt
+  
+2- 
