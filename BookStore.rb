@@ -74,19 +74,19 @@ end
 #----------------------------------------End load_items-------------------------------------------------------------------
 
 #search about the magazine by publisher name
-#2 arguments (store "array contains all books  and magazines") , (Publisher name : the name that I take from the user)
-def magazineByPublisher(store,publisher_name)
-    for i in store 
-        #this condition displays that if publisher agent is in the books or in magazines 
-        if(i.instance_variable_defined?(:@publisher_agent))
-            if i.publisher_agent == publisher_name #condition returns the index contains the publisher agent
-                return i
+def magazineByPublisher(store,publisher_from_user)
+    magazines = []
+    tmp_magazine = Magazine.new()
+    store.each do |item|
+        if item.class.name == tmp_magazine.class.name
+            if item.publisher_agent == publisher_from_user
+                magazines.push(item)
             end
         end
     end
-    return "There is no magazine for this agent"
+    return magazines
 end
-#-----------------------------------------End Search function--------------------------------------------------------------
+#-----------------------------------------End magazineByPublisher--------------------------------------------------------------
 
 
 #append new book or magazine to the corresponding file
@@ -140,14 +140,15 @@ end
 #run all the operations in GUI
 def run_GUI(store)
     require 'flammarion'
+    
     f = Flammarion::Engraving.new
-    f.puts("Book Store")
+    f.puts("\t\t\t\t\t\t\t\t Welcome to the Book Store".light_white)
 
     #Add Store Item
-    f.button("Add Store Item"){
+    f.button("Add Store Item".yellow){
         window = Flammarion::Engraving.new
         
-        window.button("Add Book"){
+        window.button("Add Book".yellow){
             window_add_book =  Flammarion::Engraving.new
             window_add_book.puts("Add Book")
             # Book: Title, Price, Author name, Number of pages, ISBN
@@ -161,14 +162,14 @@ def run_GUI(store)
             window_add_book.input("Author Name: ") {|msg| author_name = msg['text'] }
             window_add_book.input("Number Of Pages: ") {|msg| num_pages = msg['text'] }
             window_add_book.input("ISBN: ") {|msg| isbn = msg['text'] }
-            window_add_book.button("Add Book"){
+            window_add_book.button("Add".yellow){
                 write_to_file(title + ',' + price + ',' + author_name + ',' + num_pages + ',' + isbn, "b")
-                window_add_book.puts("Book Added Successfully") 
+                window_add_book.puts("Book Added Successfully".cyan) 
             }
             window_add_book.wait_until_closed
         }#End button "Add Book"
         
-        window.button("Add Magazine"){
+        window.button("Add Magazine".yellow){
             window_add_magazine =  Flammarion::Engraving.new
             window_add_magazine.puts("Add Magazine")
             # Magazine: Title, Price, Publisher Agent, Date
@@ -180,9 +181,9 @@ def run_GUI(store)
             window_add_magazine.input("Price: ") {|msg| price = msg['text'] }
             window_add_magazine.input("Publisher Agent: ") {|msg| publisher_agent = msg['text'] }
             window_add_magazine.input("Date: ") {|msg| date = msg['text'] }
-            window_add_magazine.button("Add Magazine"){
+            window_add_magazine.button("Add".yellow){
                 write_to_file(title + ',' + price + ',' + publisher_agent + ',' + date, "m")
-                window_add_magazine.puts("Magazine Added Successfully") 
+                window_add_magazine.puts("Magazine Added Successfully".cyan) 
             }
             window_add_magazine.wait_until_closed
         }#End button "Add Magazine"
@@ -191,21 +192,23 @@ def run_GUI(store)
     #--------------------------------------------------------------
     
     #list most expensive items
-    f.button("List Most Expensive Items".white) {
+    f.button("List Most Expensive Items".green) {
         window = Flammarion::Engraving.new
         window.puts("Most 3 Expensive Items: ")
         window.puts()
         store_sorted_descendingly = sort_store_by_price(load_items)
         for i in 0..2
+            store_sorted_descendingly[i].title =  store_sorted_descendingly[i].title.yellow
+            store_sorted_descendingly[i].price = store_sorted_descendingly[i].price.green
             window.puts(store_sorted_descendingly[i])
         end
         }#End list most expensive items
     #----------------------------------------------------------------  
 
     #list books within certain range 
-    f.button("List Books Within Certain Price Range".white) {
+    f.button("List Books Within Certain Price Range".cyan) {
         window = Flammarion::Engraving.new
-        window.puts "List Books Within Certain Price Range: "
+        window.puts "List Books Within Certain Price Range: ".cyan
         from = ""
         to = ""
         window.input("From"){|msg| from = msg['text']}
@@ -218,13 +221,15 @@ def run_GUI(store)
                 if item.class.name == tmp_book.class.name
                     if item.price.to_i >= from.to_i &&
                         item.price.to_i <= to.to_i
+                        item.title = item.title.cyan
+                        item.price = item.price.blue
                         window.puts(item.to_s)
                         books_found = true
                     end
                 end
             end
             if !books_found
-                window.puts "No Books Found in That Range "
+                window.puts "No books found".cyan
             end
         }#End Search button
 
@@ -232,9 +237,10 @@ def run_GUI(store)
     #----------------------------------------------
 
     #Search Magazine By Date
-    f.button("Search Magazine By Date".white) {
+    f.button("Search Magazine By Date".light_blue) {
         window = Flammarion::Engraving.new
         date_from_user = ""
+        window.puts("Search Magazine By Date")
         window.input("dd-mm-yyyy") {|msg| date_from_user = msg['text']}
         window.button ("Search".white){
             magazine = Magazine.new()
@@ -253,34 +259,42 @@ def run_GUI(store)
                 end
             end
             if magazine_found 
+                magazine.title = magazine.title.light_blue
+                magazine.date = magazine.date.light_blue
                 window.puts magazine
             else 
-                window.puts "No Magazine Found"
+                window.puts "No magazines found".light_blue
             end
 
         }#End window
-
         window.wait_until_closed
-
     }#End search magazine by date
 
     #------------------------------------------------------------------
     #searching by publisher name
-    publisher_name = ""
-    f.button("Search Magazine By Publisher") {
-        publisher_agent = Flammarion::Engraving.new 
-        publisher_agent.puts "Search magazine by publisher name"
-        publisher_agent.input("Publisher Name") {|msg| publisher_name = msg['text']}
-        publisher_agent.button("Search") {
-            magazine = magazineByPublisher(store,publisher_name)
-            publisher_agent.pane("magazinePublisherPane").puts(magazine.to_s)
+    publisher_from_user = ""
+    f.button("Search Magazine By Publisher".light_magenta) {
+        window = Flammarion::Engraving.new 
+        window.puts"Search Magazine By Publisher Agent".light_magenta
+        window.input("Publisher Agent: ") {|msg| publisher_from_user = msg['text']}
+        window.button("Search") {
+            magazines = magazineByPublisher(load_items,publisher_from_user)
+            if !magazines.empty?
+                magazines.each do |item|
+                    item.title = item.title.light_magenta
+                    item.publisher_agent = item.publisher_agent.yellow
+                    window.puts(item)
+                end
+            else
+                window.puts"No magazines found".light_magenta
+            end
             }
     }
     #---------------------------------------------------------------------
     #Delete item
-    f.button("Delete Book / Magazine"){
+    f.button("Delete Book / Magazine".light_red){
         window = Flammarion::Engraving.new
-        window.puts "Delete Book / Magazine"
+        window.puts "Delete Book / Magazine".light_red
         tmp_store = load_items
         titles = Array.new
         tmp_store.each do |item|
@@ -296,21 +310,40 @@ def run_GUI(store)
                     new_store.push(item)
                 end
             end
-            p "new_store AFTER delete #{new_store}"
             update_file(new_store)
-            window.puts "Item deleted successfully"
+            window.puts "Item deleted successfully".light_red
             }#End secondary Delete Item
     }#End primary Delete Book / Magazine
  #---------------------------------------------------------------------
 
     #List of all store items     
-    f.button("List All Store Items".white) {
+    f.button("List All Store Items".yellow) {
         window = Flammarion::Engraving.new 
         window.puts"All Items In Store: "
         window.puts()
         tmp_store = load_items
+        tmp_book = Book.new()
+        window.puts"---------------------------------------------------------------------------------------"
+        window.puts()
+        window.puts "All books in the store: ".yellow
+        window.puts()
         tmp_store.each do |item|
-            window.puts item
+            if item.class.name == tmp_book.class.name
+                item.title = item.title.green
+                window.puts item
+            end
+        end
+        window.puts"---------------------------------------------------------------------------------------"
+
+        tmp_magazine = Magazine.new()
+        window.puts()
+        window.puts "All magazines in the store: ".yellow
+        window.puts()
+        tmp_store.each do |item|
+            if item.class.name == tmp_magazine.class.name
+                item.title = item.title.cyan
+                window.puts item
+            end
         end
     }
     # f.dropdown([1,2,3]){|h_msg| p h_msg['text']}
