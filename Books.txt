@@ -6,3 +6,4 @@ Ruby on Rails Tutorial,385.62,Michael Hartl,345,0136702651
 The Ruby Programming Language: Everything You Need to Know,377.11,David Flangan,415,0596516177
 Eloquent Ruby,614.03,Russ Oslen,397,0321584104
 
+New Ruby Book,120,Dummy Author,540,95100258

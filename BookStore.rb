@@ -244,24 +244,22 @@ def run_GUI(store)
         window.input("dd-mm-yyyy") {|msg| date_from_user = msg['text']}
         window.button ("Search".white){
             magazine = Magazine.new()
+            arr = []
             magazine_found = false
             tmp_store = load_items 
             tmp_store.each do |item|
                 if item.class.name == magazine.class.name
                     if item.date.to_s.delete("\n") == date_from_user
-                        magazine = item 
-                        magazine_found = true
-                        break 
+                        arr.push(item)
                     end
                 end
-                if magazine_found
-                    break
-                end
             end
-            if magazine_found 
-                magazine.title = magazine.title.light_blue
-                magazine.date = magazine.date.light_blue
-                window.puts magazine
+            if arr.length > 1
+                arr.each do |item|
+                    item.title = item.title.light_blue
+                    item.date = item.date.light_blue
+                    window.puts item
+                end
             else 
                 window.puts "No magazines found".light_blue
             end
