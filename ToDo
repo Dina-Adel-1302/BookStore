@@ -1,19 +1,12 @@
-0- important: make sure to edit the paths of the txt files in your code.
-
-1- If the user clicked "Add Book" many times for the same book, the program should add the book only once. 
+1- If the user clicked "Add Book" many times for the same book, the program should add the book only once. The same is for Delete button.
   
-2- Additional: When the button "List of all items" is clicked more than once it should not show the items many times. 
+2- When the button "List of all items" is clicked more than once it should not show the items many times. 
 
-3- Delete an item - (Amir - in progress)
-
-4- Additional: when the button "List most expensive items" is clicked more than once it should not show the items many times.
-
-5- Additional: Write README file for this repo.
+3- Write README file for this repo.
 
 Notes: 
- - Any Additional features might be done after we finish all the project. 
  - Flammarion repo: https://github.com/zach-capalbo/flammarion
- - Please refer to Marwan's video: https://www.youtube.com/watch?v=hLpzrXDzxZ0
+ - Marwan's video: https://www.youtube.com/watch?v=hLpzrXDzxZ0
  - Marwan's BookStore repo: https://github.com/MarwanTukhta/OOP-Ruby-BookStore
 
-Good luck :) 
+
