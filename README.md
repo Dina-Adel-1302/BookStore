@@ -41,7 +41,13 @@ gem install colorized
     51 - 62 - 95 - 97 
     
 4.   `ruby BookStore.rb`
-     
 
+### Visuals
+*   [Vidoe](https://github.com/Dina-Adel-1302/BookStore/blob/main/video.mkv)
+     
+### Acknowledgement
+*    [Amir Hossam](https://github.com/Am1rHossam)
+*    [Abdelrahman Mahmoud](https://github.com/abdoalmany)
+*    [Seif Moataz](https://github.com/Seifmoataz)
 
 
