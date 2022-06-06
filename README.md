@@ -26,7 +26,7 @@ Simple book store program to do some operations:
 Flammarion API docs:
 [http://zach-capalbo.github.io/flammarion/doc/Flammarion.html](http://zach-capalbo.github.io/flammarion/doc/Flammarion.html)
 
-also you need to download the library colorized, in your terminal type: 
+also you need to download the library colorized: 
 ```bash 
 gem install colorized
 ```
