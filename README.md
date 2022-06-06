@@ -36,9 +36,11 @@ gem install colorized
 
 2.   `git clone https://github.com/Dina-Adel-1302/BookStore.git`
       
-3.   you just need to edit the codein the Main file __BookStore.rb__ ,edit the path of the txt files, according to the path on your computer 
-    lines no: 
-    51 - 62 - 95 - 97 
+3.   You just need to edit the code in the Main file __BookStore.rb__ .
+     Edit the path of the txt files, according to the path on your computer (Sorry for that :D)
+     
+     lines no: 
+     51 - 62 - 95 - 97 
     
 4.   `ruby BookStore.rb`
 
