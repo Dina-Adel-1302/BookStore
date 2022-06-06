@@ -26,7 +26,27 @@ Simple book store program to do some operations:
 Flammarion API docs:
 [http://zach-capalbo.github.io/flammarion/doc/Flammarion.html](http://zach-capalbo.github.io/flammarion/doc/Flammarion.html)
 
-also you need to download the library colorized: 
+You might need to download the library colorized: 
 ```bash 
 gem install colorized
 ```
+### Usage
+
+1.  install [Flammarion](http://zach-capalbo.github.io/flammarion/doc/Flammarion.html)
+
+```bash
+git clone https://github.com/Dina-Adel-1302/BookStore.git
+```
+
+The Main file is 
+##### BookStore.rb 
+you just need to edit the code, edit the path of the txt files, according to the path on your computer 
+lines no: 
+51 - 62 - 95 - 97 
+
+```bash
+ruby BookStore.rb
+```
+
+
+
