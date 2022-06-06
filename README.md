@@ -34,15 +34,17 @@ gem install colorized
 
 1.  install [Flammarion](http://zach-capalbo.github.io/flammarion/doc/Flammarion.html)
 
-2.   `git clone https://github.com/Dina-Adel-1302/BookStore.git`
+2.  `git clone https://github.com/Dina-Adel-1302/BookStore.git`
+
+3.  `cd BookStore`
       
-3.   You just need to edit the code in the Main file __BookStore.rb__ .
+4.   You just need to edit the code in the Main file __BookStore.rb__ .
      
      Edit the path of the txt files, according to the path on your computer (Sorry for that :D)
      
      lines no: 51 - 62 - 95 - 97 - 116 - 117.
     
-4.   `ruby BookStore.rb`
+5.   `ruby BookStore.rb`
 
 ### Visuals
 *   [Vidoe](https://github.com/Dina-Adel-1302/BookStore/blob/main/video.mkv)
