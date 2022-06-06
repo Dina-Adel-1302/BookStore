@@ -34,20 +34,16 @@ gem install colorized
 
 1.  install [Flammarion](http://zach-capalbo.github.io/flammarion/doc/Flammarion.html)
 
-2.
-    ```bash
-    git clone https://github.com/Dina-Adel-1302/BookStore.git
-    ```
-3.
-    The Main file is 
-    ##### BookStore.rb 
-    you just need to edit the code, edit the path of the txt files, according to the path on your computer 
+2.    ```bash
+       git clone https://github.com/Dina-Adel-1302/BookStore.git
+       ```
+3.   you just need to edit the codein the Main file ##### BookStore.rb 
+    , edit the path of the txt files, according to the path on your computer 
     lines no: 
     51 - 62 - 95 - 97 
-4.
-    ```bash
-    ruby BookStore.rb
-    ```
+4.   ```bash
+     ruby BookStore.rb
+     ```
 
 
 
