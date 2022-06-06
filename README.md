@@ -14,6 +14,7 @@ Simple book store program to do some operations:
 *   Update book or magazine.
 *   Delete book or magazine.
 *   Show book or magazine.
+It was a task in a Ruby course. 
 
 ### Installation 
 
